@@ -1,4 +1,4 @@
-CFLAGS=-std=gnu99 -O1 -m32 -march=i386 -ffreestanding -nostdlib
+CFLAGS=-std=gnu99 -O1 -m16 -march=i386 -ffreestanding -nostdlib
 LDFLAGS=-Wl,--nmagic,--script=com.ld
 GCC=/usr/bin/gcc
 
