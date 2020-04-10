@@ -4,8 +4,8 @@ GCC=/usr/bin/gcc
 
 all: hello.com
 
-hello.com: main.o print.o crt0.o
-	${GCC} ${CFLAGS} -o hello.com ${LDFLAGS} main.o print.o
+hello.com: main.o print.o crt0.o dosapi.o string.o malloc.o
+	${GCC} ${CFLAGS} -o hello.com ${LDFLAGS} dosapi.o malloc.o string.o print.o main.o
 
 crt0.o: crt0.c
 	${GCC} ${CFLAGS} -o crt0.o -c crt0.c
@@ -15,6 +15,15 @@ main.o: main.c
 
 print.o: print.h print.c
 	${GCC} ${CFLAGS} -o print.o -c print.c
+
+dosapi.o: dosapi.c
+	${GCC} ${CFLAGS} -o dosapi.o -c dosapi.c
+
+malloc.o: malloc.c
+	${GCC} ${CFLAGS} -o malloc.o -c malloc.c
+
+string.o: string.c malloc.h
+	${GCC} ${CFLAGS} -o string.o -c string.c
 
 clean:
 	rm -f *.o hello.com
